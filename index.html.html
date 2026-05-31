@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Email Generator</title>
+
+<style>
+body{
+    font-family:Arial;
+    background:#0f172a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:700px;
+    background:#1e293b;
+    padding:30px;
+    border-radius:15px;
+}
+
+h1{
+    text-align:center;
+    color:#38bdf8;
+}
+
+textarea,input,select{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    background:#38bdf8;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+}
+
+.output{
+    margin-top:20px;
+    background:#0f172a;
+    padding:15px;
+    border-radius:10px;
+    min-height:150px;
+    white-space:pre-wrap;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📧 AI Email Generator</h1>
+
+<!-- Sender Name -->
+<input type="text" id="sender" placeholder="Your Name (Sender)">
+
+<!-- Recipient Name -->
+<input type="text" id="name" placeholder="Recipient Name">
+
+<!-- Email Type -->
+<select id="type">
+<option>Formal</option>
+<option>Casual</option>
+<option>Leave Request</option>
+<option>Apology</option>
+<option>Business</option>
+<option>Permission</option>
+</select>
+
+<!-- Topic -->
+<textarea id="topic" placeholder="Enter email purpose"></textarea>
+
+<!-- Button -->
+<button onclick="generateEmail()">
+Generate Email
+</button>
+
+<!-- Output -->
+<div class="output" id="result"></div>
+
+</div>
+
+<script>
+function generateEmail(){
+
+let sender = document.getElementById("sender").value;
+let name = document.getElementById("name").value;
+let type = document.getElementById("type").value;
+let topic = document.getElementById("topic").value;
+
+let email = "";
+
+if(type==="Formal"){
+email =
+`Dear ${name},
+
+I hope you are doing well.
+
+I am writing regarding ${topic}.
+
+Thank you for your time and consideration.
+
+Sincerely,
+${sender}`;
+}
+
+else if(type==="Leave Request"){
+email =
+`Dear ${name},
+
+I would like to request leave regarding ${topic}.
+
+I kindly ask for your approval.
+
+Thank you.
+
+Best Regards,
+${sender}`;
+}
+
+else if(type==="Apology"){
+email =
+`Dear ${name},
+
+I sincerely apologize regarding ${topic}.
+
+I regret any inconvenience caused and assure you this will not happen again.
+
+Thank you for your understanding.
+
+Best Regards,
+${sender}`;
+}
+
+else if(type==="Business"){
+email =
+`Dear ${name},
+
+I hope this email finds you well.
+
+I am reaching out regarding ${topic}.
+
+I look forward to discussing this further.
+
+Kind Regards,
+${sender}`;
+}
+
+else{
+email =
+`Hi ${name},
+
+Hope you're doing great.
+
+Just wanted to talk about ${topic}.
+
+Looking forward to hearing from you.
+
+Thanks,
+${sender}`;
+}
+
+document.getElementById("result").innerText = email;
+}
+</script>
+
+</body>
+</html>
